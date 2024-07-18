@@ -90,7 +90,7 @@ You should now be able to see the CoSimPlat web application running on your loca
 
 ## Troubleshooting
 
-- If you encounter any issues with database connections, ensure that your MySQL service is running and the credentials in `config.php` are correct.
+- If you encounter any issues with database connections, ensure that your MySQL service is running ;).
 - For further assistance, refer to the XAMPP [FAQs and Documentation](https://www.apachefriends.org/faq.html).
 
 ## License
