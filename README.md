@@ -5,7 +5,7 @@ This README file provides instructions for installing and running the CoSimPlat 
 # Status (PoC)
 
 
-This is just a Proof of Concept (PoC) created to demonstrate how the long-polling paradigm can be used to enable a co-simulation platform. Long-polling is an older technique used for web-based communication (e.g., quasi-instantaneous group chat) and consists of a client-side component (JavaScript in this example) and a server-side component (PHP or any other server-side language/framework).
+This is just a Proof of Concept (PoC) created to demonstrate how the long-polling paradigm can be used to enable a co-simulation platform. Compared to WebSockets, Long-polling is an older technique used for web-based communication (e.g., quasi-instantaneous group chat) and consists of a client-side component (JavaScript in this example) and a server-side component (PHP or any other server-side language/framework).
 
 ### How It Works
 
