@@ -22,7 +22,7 @@ In this PoC, we simulate this process:
 
 The two main processes here are:
 - `fetcher.php`: The backend responsible for monitoring the database.
-- `insert_row.php`: Needed to add rows to the database.
+- `insert.php`: Needed to add rows to the database.
 
 ![image](https://github.com/user-attachments/assets/2aa0697f-5b8c-4c30-8c26-1df5c633945e)
 
