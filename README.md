@@ -56,7 +56,7 @@ Before you begin, ensure you have the following software installed:
     id INT AUTO_INCREMENT PRIMARY KEY,
     simgame_id INT NOT NULL,
     submodel_id INT NOT NULL,
-    sim_step INT,  -- New column added here
+    sim_step INT,  
     payload LONGTEXT NOT NULL,
     state_history LONGTEXT NOT NULL,
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
