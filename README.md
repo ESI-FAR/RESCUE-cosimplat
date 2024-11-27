@@ -1,7 +1,7 @@
 # CoSimPlat Web Application
 
 This README file provides instructions for installing and running the CoSimPlat web application on your local machine using XAMPP. It also includes steps for creating the necessary MySQL database and table.
-This app is meant to help you visualizing you co-simulation status. If you want to setup and run your co-simulation you should refer to [CoSimPlat - Python Version](https://github.com/ESI-FAR/RESCUE-cosimplat-py). 
+This app is meant to help you visualizing your co-simulation status. If you want to setup and run your co-simulation you should refer to [CoSimPlat - Python Version](https://github.com/ESI-FAR/RESCUE-cosimplat-py). 
 
 # Status (PoC)
 
