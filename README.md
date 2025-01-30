@@ -25,7 +25,7 @@ The two main processes here are:
 - `fetcher.php`: The backend responsible for monitoring the database.
 - `insert.php`: Needed to add rows to the database.
 
-![image](![image](https://github.com/user-attachments/assets/da5edb9c-b4d9-4be7-a499-df8ea77aadea)
+![image](https://github.com/user-attachments/assets/70b934ce-b3dd-4776-a2c5-b7c45cf3566f)
 
 
 ## Prerequisites
