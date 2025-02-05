@@ -8,9 +8,9 @@ error_reporting(E_ALL);
 header('Content-Type: text/plain');
 
 // Database configuration
-$servername = "localhost";
-$username = "root";
-$password = "";
+$servername = "mariadb";
+$username = "user";
+$password = "userpassword";
 $dbname = "cosimplat";
 
 // Create connection
