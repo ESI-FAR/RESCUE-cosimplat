@@ -91,19 +91,7 @@ Before you begin, ensure you have the following software installed:
 
 You should now be able to see the CoSimPlat web application running on your local machine.
 
-Simulate button click
-```shell
-curl -X POST \
-  -H "Content-Type: application/json" \
-  -d '{
-    "simgame_id": 1,
-    "submodel_id": 1,
-    "payload": "{\"submodel_current_step\":\"1\",\"submodel_id\":\"1\",\"foo\":\"bar\"}",
-    "state_history": "{\"states\":[\"initial\",\"running\"]}",
-    "modified": "2025-02-05 10:00:00"
-  }' \
-  http://localhost:8080/objects/insert.php
-```
+Use the main.py in https://github.com/ESI-FAR/RESCUE-cosimplat-py to run sub models. See that repos README for more information.
 
 ## Troubleshooting
 
