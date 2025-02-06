@@ -60,7 +60,7 @@ Before you begin, ensure you have the following software installed:
     submodel_id INT NOT NULL,
     sim_step INT,  
     payload LONGTEXT NOT NULL,
-    state_history LONGTEXT NOT NULL,
+    state_history LONGTEXT,
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
 
