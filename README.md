@@ -59,7 +59,7 @@ Before you begin, ensure you have the following software installed:
     submodel_id INT NOT NULL,
     sim_step INT,  
     payload LONGTEXT NOT NULL,
-    state_history LONGTEXT NOT NULL,
+    state_history LONGTEXT,
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
 
@@ -89,6 +89,8 @@ Before you begin, ensure you have the following software installed:
 1. Open your web browser and go to [http://localhost/cosimplat](http://localhost/cosimplat).
 
 You should now be able to see the CoSimPlat web application running on your local machine.
+
+Use the main.py in https://github.com/ESI-FAR/RESCUE-cosimplat-py to run sub models. See that repos README for more information.
 
 ## Troubleshooting
 

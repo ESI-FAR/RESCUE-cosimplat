@@ -1,0 +1,33 @@
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - mariadb
+    volumes:
+      - ../..:/workspaces:cached
+  
+  mariadb:
+    image: mariadb:11.4
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: cosimplat
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+volumes:
+  mariadb_data:
+
+# To get mariadb console use the following command
+# docker exec -it rescue-cosimplat_devcontainer-mariadb-1 mariadb -u user -p cosimplat
+# To see apache/php logs use
+# docker logs -f rescue-cosimplat_devcontainer-php-1

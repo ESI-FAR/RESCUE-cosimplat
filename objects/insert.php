@@ -9,9 +9,9 @@ header('Content-Type: application/json');
 header('Cache-Control: no-cache, must-revalidate');
 
 // Database configuration
-$servername = "localhost";
-$username = "root";
-$password = "";
+$servername = "mariadb";
+$username = "user";
+$password = "userpassword";
 $dbname = "cosimplat";
 
 // Create connection
