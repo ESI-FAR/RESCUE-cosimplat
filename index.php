@@ -52,61 +52,63 @@
             text-align: left;
         }
 
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            cursor: pointer;
-        }
+            .tooltip {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+                }
 
         .tooltip .tooltiptext {
-            visibility: hidden;
-            width: auto;
-            background-color: #555;
-            color: #fff;
-            text-align: center;
-            padding: 5px;
-            border-radius: 6px;
-            position: absolute;
-            z-index: 1;
-            bottom: 100%; /* Position tooltip above text */
-            left: 50%;
-            margin-left: -60px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
+        visibility: hidden;
+        background-color: #333; /* Darker background */
+        color: #fff; /* White text */
+        text-align: left; /* Align content to the left */
+        padding: 8px; /* Add padding */
+        border-radius: 5px; /* Rounded corners */
+        position: absolute;
+        z-index: 9999; /* Higher z-index to ensure it appears on top */
+        bottom: 125%; /* Position above the text */
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0; /* Start invisible */
+        transition: opacity 0.3s ease; /* Smooth transition */
+        white-space: pre-wrap; /* Preserve formatting for JSON */
+        width: max-content; /* Adjust width dynamically */
+        max-width: 500px; /* Prevent excessive width */
+    }
 
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1; /* Show tooltip on hover */
+    }
 
-        .progress {
-            width: 100%;
-            background-color: #f3f3f3;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-bottom: 15px; /* Added margin for spacing between progress bars */
-        }
+    .progress {
+        width: 100%;
+        background-color: #f3f3f3;
+        border-radius: 5px;
+        overflow: hidden;
+        margin-bottom: 15px; /* Added margin for spacing between progress bars */
+    }
 
-        .progress-bar {
-            height: 20px;
-            width: 0%;
-            background-color: blue;
-            transition: width 0.4s;
-        }
+    .progress-bar {
+        height: 20px;
+        width: 0%;
+        background-color: blue;
+        transition: width 0.4s;
+    }
 
-        .table-container {
-            width: 100%; /* Adjust width as needed */
-            height: 300px; /* Set the height for the scrollable area */
-            overflow: auto; /* Enables scrolling */
-            border: 1px solid #ddd; /* Optional: add border around the scrollable area */
-        }
+    .table-container {
+        width: 100%; /* Adjust width as needed */
+        height: 300px; /* Set the height for the scrollable area */
+        overflow: auto; /* Enables scrolling */
+        border: 1px solid #ddd; /* Optional: add border around the scrollable area */
+    }
 
-        th, td {
-            border: 1px solid #ddd; /* Optional: adds borders to table cells */
-            padding: 8px;
-            text-align: left;
-        }
+    th, td {
+        border: 1px solid #ddd; /* Optional: adds borders to table cells */
+        padding: 8px;
+        text-align: left;
+    }
     </style>
 </head>
 <body>
@@ -207,35 +209,56 @@ window.onload = function() {
     fetchSimData();
 };
 
-// Render a new packet in the table
 function renderpack(pack) {
     var table = document.getElementById('dataTable');
     var row = table.insertRow();
 
+    console.log(pack);
+
+    // Parse the payload to extract nested data
+    var parsedPayload = JSON.parse(pack.payload);
+    var submodel_id = parsedPayload.submodel_id; // Extract submodel_id
+    var sim_step = parsedPayload.payload.submodel_current_step; // Extract sim_step
+
     // Submodel ID
     var cell1 = row.insertCell(0);
-    cell1.textContent = pack.submodel_id;
+    cell1.textContent = submodel_id;
 
     // Sim Step
     var cell2 = row.insertCell(1);
-    cell2.textContent = pack.sim_step;
+    cell2.textContent = sim_step;
+
+    
+    // Escape HTML special characters in the JSON string
+    function escapeHTML(str) {
+        return str.replace(/[&<>"'`=]/g, function (match) {
+            return `&#${match.charCodeAt(0)};`;
+        });
+    }
 
     // Payload (shortened) with tooltip
-    var cell3 = row.insertCell(2);
-    var shortPayload = JSON.stringify(pack.payload).substring(0, 50) + '...';
-    var fullPayload = JSON.stringify(pack.payload);
-    cell3.innerHTML = `<span class="tooltip">${shortPayload}<span class="tooltiptext">${fullPayload}</span></span>`;
+    var shortPayload = JSON.stringify(parsedPayload).substring(0, 50) + '...'; // Shorten payload
+    var fullPayload = JSON.stringify(parsedPayload, null, 2); // Pretty-print JSON for tooltip
+    var escapedPayload = escapeHTML(fullPayload); // Escape the full JSON for use in the tooltip
+
+        
+        var cell3 = row.insertCell(2);
+        cell3.innerHTML = `
+        <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="${escapedPayload}">
+            <div>${shortPayload}</div>
+        </span>
+    `;
 
     // Timestamp
     var cell4 = row.insertCell(3);
     cell4.textContent = pack.timestamp;
 
     // Update progress bars after adding new row
-    updateProgressBars(pack.submodel_id, pack.sim_step);
+    updateProgressBars(submodel_id, sim_step);
 
     // Scroll to the bottom of the table container after adding the new row
     const tableContainer = document.getElementById("tableContainer");
-            tableContainer.scrollTop = tableContainer.scrollHeight;
+    tableContainer.scrollTop = tableContainer.scrollHeight;
 }
 
 
