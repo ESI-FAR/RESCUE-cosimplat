@@ -6,7 +6,7 @@ This app is meant to help you visualizing your co-simulation status. If you want
 # Status (PoC)
 
 
-This is just a Proof of Concept (PoC) created to demonstrate how the long-polling paradigm can be used to enable a co-simulation platform. Compared to WebSockets, Long-polling is an older technique used for web-based communication (e.g., quasi-instantaneous group chat) and consists of a client-side component (JavaScript in this example) and a server-side component (PHP or any other server-side language/framework).
+This is a Proof of Concept (PoC) created to demonstrate how the long-polling paradigm can be used to enable a co-simulation platform. Compared to WebSockets, Long-polling is an older technique used for web-based communication (e.g., quasi-instantaneous group chat) and consists of a client-side component (JavaScript in this example) and a server-side component (PHP or any other server-side language/framework).
 
 ### How It Works
 
@@ -23,9 +23,9 @@ In this PoC, we simulate this process:
 
 The two main processes here are:
 - `fetcher.php`: The backend responsible for monitoring the database.
-- `insert.php`: Needed to add rows to the database.
 
-![image](https://github.com/user-attachments/assets/2aa0697f-5b8c-4c30-8c26-1df5c633945e)
+![image](https://github.com/user-attachments/assets/70b934ce-b3dd-4776-a2c5-b7c45cf3566f)
+
 
 ## Prerequisites
 
